@@ -1,0 +1,58 @@
+<div class="row" style="margin:15px;">
+  <div class="col-md-6">
+    <h1 class="">Add Feedback</h1>
+    <hr>
+    <form #feedBackform="ngForm">
+      <fieldset>
+        <div class="form-group">
+          <label for="exampleInputEmail1">Email address</label>
+          <input type="email" class="form-control" aria-describedby="emailHelp" placeholder="Enter email" name="email" ngModel required email
+            #nm="ngModel" [ngClass]="{'is-invalid': !nm.valid && nm.touched , 'is-valid': nm.valid && nm.touched }">
+        </div>
+        <div class="form-group">
+          <label for="exampleInputPassword1">Subject</label>
+          <input type="text" class="form-control" name="subject" placeholder="Subject" ngModel required
+            #sub="ngModel" [ngClass]="{'is-invalid': !sub.valid && sub.touched , 'is-valid': sub.valid && sub.touched }">
+        </div>
+        <div class="form-group">
+          <label for="exampleTextarea">Description</label>
+          <textarea class="form-control" id="exampleTextarea" rows="5" ngModel name="description"></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary" [disabled]="!feedBackform.valid"  (click)="onAddFeedback(feedBackform)" >{{ editFeed ? 'Update':'Add'  }}</button>&nbsp;&nbsp;
+        <button type="reset" class="btn btn-danger" (click)="onCancel()" >Clear</button>
+      </fieldset>
+    </form>
+  </div>
+
+  <div class="col-md-6">
+    <h1>All Feedbacks</h1>
+    <hr>
+    <table class="table table-hover">
+      <thead>
+        <tr class="table-info">
+          <th scope="col">Email</th>
+          <th scope="col">Subject</th>
+          <th scope="col">Description</th>
+          <th scope="col">Actions</th>
+        </tr>
+      </thead>
+      <tr *ngFor="let f of feedbacks | paginate: { itemsPerPage: 10, currentPage: p };let i=index;">
+        <td> {{ f.email }} </td>
+        <td> {{ f.subject }} </td>
+        <td> {{ f.description }} </td>
+        <td>
+          <a (click)="onEdit(i)">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/4/40/UniversalEditButton3.png" width="25px">
+          </a>
+          &nbsp;
+          <a (click)="onDelete(i)">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/1/16/Deletion_icon.svg" width="25px" >
+          </a>
+        </td>
+      </tr>
+    </table>
+    <div class="pagination">
+      <pagination-controls (pageChange)="p = $event"></pagination-controls>
+    </div>
+  </div>
+</div>

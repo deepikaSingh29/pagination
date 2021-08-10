@@ -1,0 +1,14 @@
+@keyframes yourAnimation1{
+    0%{
+        transform: rotate(0) translateY(-15%);
+        opacity: 0;
+        }
+    100%{
+        transform: rotate(0) translateY(0);
+        opacity: 1;
+        }
+}
+
+.elementToAnimate1{
+    animation: yourAnimation1 1s forwards 0s ease;
+}

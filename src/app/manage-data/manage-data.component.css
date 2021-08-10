@@ -1,0 +1,17 @@
+a{
+  cursor: pointer;
+}
+@keyframes yourAnimation{
+    0%{
+        }
+    49%{
+        transform: skewX(15deg);
+        }
+    99%{
+        transform: rotate(xx) skewX(15deg);
+        }
+}
+
+.elementToAnimate{
+    animation: yourAnimation 3s infinite 0s linear;
+}
