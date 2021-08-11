@@ -12,7 +12,7 @@ import { AboutComponent } from './about/about.component';
 import { NgxPaginationModule } from 'ngx-pagination';
 
 const appRoute: Routes = [
-  { path: '', component: HomeComponent },
+  { path: '', component: ManageDataComponent },
   { path: 'home', component: HomeComponent },
   { path: 'manage-data', component: ManageDataComponent },
   { path: 'about', component: AboutComponent }
